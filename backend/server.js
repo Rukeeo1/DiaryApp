@@ -1,9 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const userRouter = require('./routes/users');
+const connectDB = require('./config/db')
+// const userRouter = require('./routes/users');
 const morgan = require('morgan');
 
 
@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 
-app.use('/api/users', userRouter);
+connectDB();
+
+
+app.use('/api/users', (req,res) => res.send('hello boo'));
 
 const port = process.env.PORT || 5000;
 
