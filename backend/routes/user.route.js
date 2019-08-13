@@ -1,7 +1,7 @@
 //this guy would handle all necessary routes for getting <users className="">
 const express = require('express')
 const router = express.Router();
-console.log(router)
+
 
 router.get('/', (req,res) => {
     //do something with the controller....
