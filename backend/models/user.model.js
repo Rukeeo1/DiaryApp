@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     minlength: 5,
-    maxlength: 50
+    maxlength: 50,
   },
   email: {
     type: String,
@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    minlength: 6
+    minlength: 6,
+    required: true
   },
   avatar: {
     type: String,
@@ -27,3 +28,11 @@ const userSchema = new mongoose.Schema({
   },
   timestamps: true
 });
+
+//ensures that we don't have duplicate users in the database....
+userSchema.plugin(uniqueValidator);
+
+const UserModel = mongoose.model('User', userSchema);
+
+module.exports = UserModel
+
