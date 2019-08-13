@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     minlength: 5,
-    maxlength: 50,
+    maxlength: 50
   },
   email: {
     type: String,
@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: getAvatar(this.email)
   },
+  isAdmin: {
+    type: String,
+    default: false
+  },
   timestamps: true
 });
 
@@ -34,5 +38,4 @@ userSchema.plugin(uniqueValidator);
 
 const UserModel = mongoose.model('User', userSchema);
 
-module.exports = UserModel
-
+module.exports = UserModel;
